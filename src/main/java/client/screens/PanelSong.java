@@ -1,10 +1,13 @@
 package client.screens;
 
+
+import client.ClientManager;
 import client.utils.Utils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * Реализация панели списка доступных песен
@@ -12,24 +15,17 @@ import java.awt.event.ActionListener;
 
 public class PanelSong {
     private static JPanel panel = new JPanel();
-    String [][] song = new String[][]
-            {{"Song 1", "autor 1", "link 1"},
-                    {"Song 2", "autor 2", "link 2"},
-                    {"Song 3", "autor 3", "link 3"},
-                    {"Song 4", "autor 4", "link 4"},
-                    {"Song 5", "autor 5", "link 5"}};
-    String [] columnsName = new String[] {"Name","Autor","Link"};
+    private static String[] columnsName = new String[]{"Исполнитель", "Название песни", "Ссылка"};
+    private static String[][] songs = new ClientManager().getSongs();
 
     public JPanel getPanel() {
-        return showPanelSong(song, columnsName);
+        return showPanelSong(songs, columnsName);
     }
 
     private JPanel showPanelSong(String[][] song, String[] columnsName) {
-
         JButton backButton = new JButton("Назад");
         backButton.addActionListener(new PanelSong.ButtonBackMainPanelListener());
         panel.add(backButton);
-
         JTable tableSong = new JTable(song, columnsName);
         tableSong.setRowHeight(80);
         panel.add(new JScrollPane(tableSong));
@@ -45,5 +41,4 @@ public class PanelSong {
             System.out.println("Нажали на кнопку возврата на главную страницу");
         }
     }
-
 }

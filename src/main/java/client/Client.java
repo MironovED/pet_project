@@ -14,6 +14,11 @@ public class Client {
     Socket socket;
     List<Song> listSong;
 
+    public List<Song> getListSong() {
+        startClient();
+        return listSong;
+    }
+
     public void startClient() {
         try {
             socket = new Socket("127.0.0.1", 4242);
@@ -21,10 +26,13 @@ public class Client {
                 System.out.println("Соединение с сервером установлено на порту " + socket.getPort());
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
                 listSong = (List<Song>) in.readObject();
-                System.out.println(listSong);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        new Client().startClient();
     }
 }

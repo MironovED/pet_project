@@ -17,35 +17,36 @@ public class ServerBD {
     private static ServerSocket server;
     private static Socket clientSocket;
     private static ClientManager clientManager = new ClientManager();
+    private static List<Song> listSong = clientManager.getSongList();
 
     public static void main(String[] args) {
-        new ServerBD().startServer();
+        ServerBD s = new ServerBD();
+        s.createListSong();
+        s.startServer();
     }
 
     public void startServer() {
         try {
             server = new ServerSocket(4242);
             System.out.println("Сервер запущен");
-            //метод accept() блокирует приложение до тех пор, пока не поступит запрос,
-            // после чего возвращает сокет для взаимодействия с клиентом
+            //метод accept() блокирует приложение до тех пор, пока не поступит запрос, после чего возвращает сокет для взаимодействия с клиентом
             while (true) {
                 clientSocket = server.accept();
                 ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
-                out.writeObject(createListSong());
+                out.writeObject(listSong);
                 out.close();
-                System.out.println(createListSong());
+                System.out.println(listSong);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public List<Song> createListSong() {
+    public void createListSong() {
         clientManager.addSongList("src/main/resources/song/song1.json");
         clientManager.addSongList("src/main/resources/song/song2.json");
         clientManager.addSongList("src/main/resources/song/song3.json");
         clientManager.addSongList("src/main/resources/song/song4.json");
         clientManager.addSongList("src/main/resources/song/song5.json");
-        return clientManager.getSongList();
     }
 }

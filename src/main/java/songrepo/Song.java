@@ -3,6 +3,8 @@ package songrepo;
 import java.io.Serializable;
 
 public class Song implements Serializable {
+    /** исполнитель */
+    private String Author;
     /** название песни */
     private String title;
     /** текст песни */
@@ -10,30 +12,23 @@ public class Song implements Serializable {
     /** ссылка на песню в яндекс музыка */
     private String yandexLink;
 
-    public Song(String text, String chords, String yandexLink) {
+    public Song(String Author, String title, String text, String yandexLink) {
+        this.Author = Author;
+        this.title = title;
         this.text = text;
-        this.title = chords;
         this.yandexLink = yandexLink;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getAuthor() {
+        return Author;
     }
 
-    public void setChords(String chords) {
-        this.title = chords;
-    }
-
-    public void setYandexLink(String yandexLink) {
-        this.yandexLink = yandexLink;
+    public String getTitle() {
+        return title;
     }
 
     public String getText() {
         return text;
-    }
-
-    public String getChords() {
-        return title;
     }
 
     public String getYandexLink() {
