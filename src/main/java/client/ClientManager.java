@@ -6,6 +6,7 @@ import songrepo.Song;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  * Основной метод - получение json из файла. его чтение и запись в обект Song
  */
 public class ClientManager {
-    private static List<Song> songList;
+    private static List<Song> songList = new ArrayList<>();
     private static String[][] songs;
 
     public String[][] getSongs() {
