@@ -1,11 +1,9 @@
-package client.screens;
+package client.ui;
 
 
-import client.ClientManager;
 import client.utils.Utils;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,25 +12,23 @@ import java.awt.event.MouseListener;
 
 
 /**
- * Реализация панели списка доступных песен
+ * Панель списка доступных песен
  */
 
-public class PanelSong {
+public class SongPanel {
     private static JPanel panel = new JPanel();
-    private static String[] columnsName = new String[]{"Исполнитель", "Название песни", "Ссылка"};
-    private static String[][] songs = new ClientManager().getSongs();
-    protected final SongTableModel tableModel = new SongTableModel();
+    protected final BaseTableModel tableModel = new BaseTableModel();
 
 
     public JPanel getPanel() {
-        return showPanelSong(songs, columnsName);
+        return showPanelSong();
     }
 
-    private JPanel showPanelSong(String[][] song, String[] columnsName) {
+    private JPanel showPanelSong() {
         JButton backButton = new JButton("Назад");
-        backButton.addActionListener(new PanelSong.ButtonBackMainPanelListener());
+        backButton.addActionListener(new SongPanel.ButtonBackMainPanelListener());
         panel.add(backButton);
-        JTable tableSong = new JTable(song, columnsName);
+        JTable tableSong = new JTable(tableModel);
         tableSong.setRowHeight(80);
         tableSong.setFillsViewportHeight(true);
         tableSong.setShowGrid(true);
@@ -40,9 +36,11 @@ public class PanelSong {
         tableSong.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Просто клик по строке");
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     System.out.println("Двойной клик по строке");
+                    String id = String.valueOf(tableSong.getValueAt(tableSong.getSelectedRow(), 1).toString());
+                    System.out.println(id);
+                    new Utils().OpenDetailsSongPanel();
 
                 }
             }
@@ -82,32 +80,5 @@ public class PanelSong {
         }
     }
 
-    public class SongTableModel extends AbstractTableModel {
-        private final String[] columnsName = {"Исполнитель", "Название песни", "Ссылка"};
-        private Object[][] songs = new ClientManager().getSongs();
 
-        @Override
-        public int getRowCount() {
-            return songs.length;
-        }
-
-        @Override
-        public int getColumnCount() {
-            return columnsName.length;
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            return null;
-        }
-
-        @Override
-        public boolean isCellEditable(int row, int column) { return false; }
-
-        public void setValueAt(Object value, int row, int col) {
-            songs[row][col] = value;
-            fireTableCellUpdated(row, col);
-        }
-
-    }
 }

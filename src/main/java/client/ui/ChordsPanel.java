@@ -1,4 +1,4 @@
-package client.screens;
+package client.ui;
 
 import client.utils.Utils;
 
@@ -7,10 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Реализация панели с аккордами
+ * Панель с аккордами
  */
 
-public class PanelChords {
+public class ChordsPanel {
     private static JPanel panel = new JPanel();
 
     public JPanel getPanel() {
@@ -19,7 +19,7 @@ public class PanelChords {
 
     private JPanel showPanelChords() {
         JButton backButton = new JButton("Назад");
-        backButton.addActionListener(new PanelChords.ButtonBackMainPanelListener());
+        backButton.addActionListener(new ChordsPanel.ButtonBackMainPanelListener());
         panel.add(backButton);
 
         return panel;

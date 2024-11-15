@@ -1,30 +1,31 @@
 package client.utils;
 
-import client.screens.MainPanel;
-import client.screens.MainScreen;
-import client.screens.PanelChords;
-import client.screens.PanelSong;
+import client.ui.*;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
- * В данном классе представлены методы для смены панелей во фрейме
+ * Представлены методы для смены панелей во фрейме
  */
 
 public class Utils {
-    private static JPanel panelChords = new PanelChords().getPanel();
-    private static JPanel panelSong = new PanelSong().getPanel();
+    private static JPanel panelChords = new ChordsPanel().getPanel();
+    private static JPanel panelSong = new SongPanel().getPanel();
     private static JPanel mainPanel = new MainPanel().getPanel();
-    private static JFrame frame = new MainScreen().getFrame();
+    private static JPanel DetailsSongPanel = new DetailsSongPanel().getPanel("");
+    private static JFrame frame = new BaseFrame().getFrame();
 
     public void openMainPanel() {
+        DetailsSongPanel.setVisible(false);
         panelSong.setVisible(false);
         panelChords.setVisible(false);
         mainPanel.setVisible(true);
-        frame.getContentPane().add(mainPanel);
+        frame.getContentPane().add(mainPanel, BorderLayout.SOUTH);
     }
 
     public void OpenSongPanel() {
+        DetailsSongPanel.setVisible(false);
         mainPanel.setVisible(false);
         panelChords.setVisible(false);
         panelSong.setVisible(true);
@@ -32,9 +33,19 @@ public class Utils {
     }
 
     public void OpenChordPanel() {
+        DetailsSongPanel.setVisible(false);
         panelSong.setVisible(false);
         mainPanel.setVisible(false);
         panelChords.setVisible(true);
         frame.getContentPane().add(panelChords);
     }
+
+    public void OpenDetailsSongPanel() {
+        panelSong.setVisible(false);
+        mainPanel.setVisible(false);
+        panelChords.setVisible(false);
+        DetailsSongPanel.setVisible(true);
+        frame.getContentPane().add(DetailsSongPanel);
+    }
+
 }

@@ -1,13 +1,17 @@
-package client.screens;
+package client.ui;
 
 import client.utils.Utils;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Базовое окно
+ */
 
-public class MainScreen {
+public class BaseFrame extends Frame {
     private static JFrame frame = new JFrame("Песни под гитару");
 
     public JFrame getFrame() {
@@ -31,9 +35,9 @@ public class MainScreen {
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Меню");
         JMenuItem addSong = new JMenuItem("Добавить песню");
-        addSong.addActionListener(new MainScreen.AddSongListener());
+        addSong.addActionListener(new BaseFrame.AddSongListener());
         JMenuItem remoteSong = new JMenuItem("Удалить песню");
-        remoteSong.addActionListener(new MainScreen.RemoteSongListener());
+        remoteSong.addActionListener(new BaseFrame.RemoteSongListener());
 
         menu.add(addSong);
         menu.add(remoteSong);

@@ -1,4 +1,4 @@
-package client.screens;
+package client.ui;
 
 import client.utils.Utils;
 
@@ -8,10 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Реализация главной панели фрейма
+ * Главная панель
+ * На ней располагаются 2 кнопки
  */
 
-public class MainPanel {
+public class MainPanel extends JPanel {
     private static JPanel panel = new JPanel();
 
     public JPanel getPanel() {
@@ -19,18 +20,19 @@ public class MainPanel {
     }
 
     private JPanel showMainPanel() {
-        panel.setLayout(new GridBagLayout());
-
         JButton openSongs = new JButton("Открыть список песен");
         openSongs.addActionListener(new MainPanel.ButtonOpenSongListener());
+        openSongs.setSize(100, 500);
+        openSongs.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton openChords = new JButton("Открыть аккорды");
         openChords.addActionListener(new MainPanel.ButtonOpenChordListener());
+        openChords.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panel.setLayout(new GridBagLayout());
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(openSongs);
         panel.add(openChords);
-
+        panel.setSize(new Dimension(500, 200));
         return panel;
     }
 
