@@ -17,6 +17,19 @@ public class ClientManager {
     private static List<Song> songList = new ArrayList<>();
     private static String[][] songs;
 
+    public Song findSong(String nameText) {
+        //потом перевести в stream
+        Song foundSong = null;
+        List<Song> obj = songList;
+        for (Song song : obj) {
+            if(song.getTitle().equals(nameText)) {
+                foundSong = song;
+                return foundSong;
+            }
+        }
+        return foundSong;
+    }
+
     public String[][] getSongs() {
         setListSongName();
         return songs;
@@ -37,6 +50,7 @@ public class ClientManager {
             ex.printStackTrace();
         }
     }
+
     //метод по изъятию данных из объектов Song и создание двухмерного массива строк
     public static void setListSongName() {
         songList = new Client().getListSong();

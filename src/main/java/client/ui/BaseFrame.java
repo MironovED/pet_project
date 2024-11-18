@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 /**
  * Базовое окно
  */
-
 public class BaseFrame extends Frame {
     private static JFrame frame = new JFrame("Песни под гитару");
 

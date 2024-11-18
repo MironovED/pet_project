@@ -2,6 +2,7 @@ package client.ui;
 
 
 import client.utils.Utils;
+import songrepo.Song;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 
 /**
@@ -18,7 +20,6 @@ import java.awt.event.MouseListener;
 public class SongPanel {
     private static JPanel panel = new JPanel();
     protected final BaseTableModel tableModel = new BaseTableModel();
-
 
     public JPanel getPanel() {
         return showPanelSong();
@@ -40,8 +41,8 @@ public class SongPanel {
                     System.out.println("Двойной клик по строке");
                     String id = String.valueOf(tableSong.getValueAt(tableSong.getSelectedRow(), 1).toString());
                     System.out.println(id);
-                    new Utils().OpenDetailsSongPanel();
-
+                    JPanel detailsPanel = new DetailsSongPanel(id).getPanel();
+                    new Utils().OpenDetailsSongPanel(detailsPanel);
                 }
             }
 

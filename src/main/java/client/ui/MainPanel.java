@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
  * Главная панель
  * На ней располагаются 2 кнопки
  */
-
 public class MainPanel extends JPanel {
     private static JPanel panel = new JPanel();
 
