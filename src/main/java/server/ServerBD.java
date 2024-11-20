@@ -19,12 +19,6 @@ public class ServerBD {
     private static ClientManager clientManager = new ClientManager();
     private static List<Song> listSong = clientManager.getSongList();
 
-    public static void main(String[] args) {
-        ServerBD s = new ServerBD();
-        s.createListSong();
-        s.startServer();
-    }
-
     public void startServer() {
         try {
             server = new ServerSocket(4242);

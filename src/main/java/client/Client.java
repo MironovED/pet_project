@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Client - создает подключение к серверу и забирает список объектов Song
  */
+
 public class Client {
     Socket socket;
     List<Song> listSong;
@@ -31,7 +32,4 @@ public class Client {
         }
     }
 
-    public static void main(String[] args) {
-        new Client().startClient();
-    }
 }

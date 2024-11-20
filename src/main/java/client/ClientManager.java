@@ -13,6 +13,7 @@ import java.util.List;
  * ClientManager содержит методы по взаимодействию с объектами Song
  * Основной метод - получение json из файла. его чтение и запись в обект Song
  */
+
 public class ClientManager {
     private static List<Song> songList = new ArrayList<>();
     private static String[][] songs;
