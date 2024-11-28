@@ -21,17 +21,31 @@ public class MainPanel extends JPanel {
     private JPanel showMainPanel() {
         JButton openSongs = new JButton("Открыть список песен");
         openSongs.addActionListener(new MainPanel.ButtonOpenSongListener());
-        openSongs.setSize(100, 500);
-        openSongs.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //openSongs.setSize(100, 500);
 
         JButton openChords = new JButton("Открыть аккорды");
         openChords.addActionListener(new MainPanel.ButtonOpenChordListener());
-        openChords.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.add(openSongs);
-        panel.add(openChords);
-        panel.setSize(new Dimension(500, 200));
+        // Определение менеджера расположения
+        GroupLayout layout = new GroupLayout(panel);
+        panel.setLayout(layout);
+        //автоматическая вставка разрыва
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        // Создание горизонтальной группы
+        layout.setHorizontalGroup(layout.createSequentialGroup()
+                .addComponent(openSongs)
+                .addComponent(openChords));
+
+        layout.linkSize(SwingConstants.HORIZONTAL, openSongs, openChords);
+
+        // Создание вертикальной группы
+        layout.setVerticalGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup()
+                        .addComponent(openSongs)
+                        .addComponent(openChords)));
+
         return panel;
     }
 

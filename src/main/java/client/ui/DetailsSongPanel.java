@@ -32,10 +32,39 @@ public class DetailsSongPanel {
         JButton buttonBack = new JButton("назад");
         buttonBack.addActionListener(new ButtonBackListener());
 
+        JScrollPane textPane = new JScrollPane(text);
+        JScrollPane linkPane = new JScrollPane(link);
+
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        /**
         panel.add(new JScrollPane(text));
         panel.add(new JScrollPane(link));
         panel.add(buttonBack);
+        */
+        GroupLayout layout = new GroupLayout(panel);
+        panel.setLayout(layout);
+        //автоматическая вставка разрыва
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        layout.setHorizontalGroup(
+                layout.createSequentialGroup()
+                        .addComponent(buttonBack)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                .addComponent(textPane)
+                                .addComponent(linkPane))
+        );
+
+        layout.setVerticalGroup(
+                layout.createParallelGroup()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(buttonBack)
+                                .addComponent(textPane))
+                        .addComponent(linkPane)
+        );
+
+
+
 
         return panel;
     }
