@@ -1,8 +1,9 @@
 import client.ui.BaseFrame;
 
-public class AppClient {
+public class AppClient implements Runnable {
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         new BaseFrame().start();
     }
 }

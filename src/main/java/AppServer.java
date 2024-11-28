@@ -1,9 +1,10 @@
 
 import server.ServerBD;
 
-public class AppServer {
+public class AppServer implements Runnable {
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         new ServerBD().createListSong();
         new ServerBD().startServer();
     }
