@@ -28,6 +28,9 @@ public class BaseTableModel extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int row, int column) { return false; }
 
+    @Override
+    public String getColumnName(int column) { return columnsName[column]; }
+
     public void setValueAt(Object value, int row, int col) {
         songs[row][col] = value;
         fireTableCellUpdated(row, col);

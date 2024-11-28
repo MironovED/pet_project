@@ -28,8 +28,9 @@ public class SongPanel {
     private JPanel showPanelSong() {
         JButton backButton = new JButton("Назад");
         backButton.addActionListener(new SongPanel.ButtonBackMainPanelListener());
-        panel.add(backButton);
+
         JTable tableSong = new JTable(tableModel);
+
         tableSong.setRowHeight(80);
         tableSong.setFillsViewportHeight(true);
         tableSong.setShowGrid(true);
@@ -67,7 +68,31 @@ public class SongPanel {
             }
         });
 
-        panel.add(new JScrollPane(tableSong));
+        JLabel label = new JLabel("Список доступных песен");
+        JScrollPane scrollPane = new JScrollPane(tableSong);
+
+        // Определение менеджера расположения
+        GroupLayout layout = new GroupLayout(panel);
+        panel.setLayout(layout);
+        //автоматическая вставка разрыва
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        layout.setHorizontalGroup(
+                layout.createSequentialGroup()
+                    .addComponent(backButton)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                            .addComponent(label)
+                            .addComponent(scrollPane))
+        );
+
+        layout.setVerticalGroup(
+                layout.createParallelGroup()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(backButton)
+                                .addComponent(label))
+                        .addComponent(scrollPane)
+        );
 
         return panel;
     }

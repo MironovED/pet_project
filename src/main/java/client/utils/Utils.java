@@ -21,7 +21,7 @@ public class Utils {
         panelSong.setVisible(false);
         panelChords.setVisible(false);
         mainPanel.setVisible(true);
-        frame.getContentPane().add(mainPanel, BorderLayout.SOUTH);
+        frame.getContentPane().add(mainPanel, BorderLayout.NORTH);
     }
 
     public void OpenSongPanel() {

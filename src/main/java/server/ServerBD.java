@@ -13,7 +13,7 @@ import java.util.List;
  * Сервер отправляет список объектов Song клиенту
  */
 
-public class ServerBD {
+public class ServerBD implements Runnable {
     private static ServerSocket server;
     private static Socket clientSocket;
     private static ClientManager clientManager = new ClientManager();
@@ -62,5 +62,10 @@ public class ServerBD {
         clientManager.addSongList("src/main/resources/song/song23.json");
         clientManager.addSongList("src/main/resources/song/song24.json");
         clientManager.addSongList("src/main/resources/song/song25.json");
+    }
+
+    @Override
+    public void run() {
+
     }
 }
