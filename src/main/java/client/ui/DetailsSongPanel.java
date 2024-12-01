@@ -33,14 +33,9 @@ public class DetailsSongPanel {
         buttonBack.addActionListener(new ButtonBackListener());
 
         JScrollPane textPane = new JScrollPane(text);
-        JScrollPane linkPane = new JScrollPane(link);
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        /**
-        panel.add(new JScrollPane(text));
-        panel.add(new JScrollPane(link));
-        panel.add(buttonBack);
-        */
+
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);
         //автоматическая вставка разрыва
@@ -52,7 +47,7 @@ public class DetailsSongPanel {
                         .addComponent(buttonBack)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                                 .addComponent(textPane)
-                                .addComponent(linkPane))
+                                .addComponent(link))
         );
 
         layout.setVerticalGroup(
@@ -60,11 +55,8 @@ public class DetailsSongPanel {
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(buttonBack)
                                 .addComponent(textPane))
-                        .addComponent(linkPane)
+                        .addComponent(link)
         );
-
-
-
 
         return panel;
     }
