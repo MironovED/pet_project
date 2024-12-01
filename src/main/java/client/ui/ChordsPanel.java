@@ -23,6 +23,7 @@ public class ChordsPanel {
 
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);
+
         //автоматическая вставка разрыва
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);

@@ -19,11 +19,10 @@ public class MainPanel extends JPanel {
     }
 
     private JPanel showMainPanel() {
-        JButton openSongs = new JButton("Открыть список песен");
+        JButton openSongs = new JButton("Список песен");
         openSongs.addActionListener(new MainPanel.ButtonOpenSongListener());
-        //openSongs.setSize(100, 500);
 
-        JButton openChords = new JButton("Открыть аккорды");
+        JButton openChords = new JButton("Аккорды");
         openChords.addActionListener(new MainPanel.ButtonOpenChordListener());
 
         // Определение менеджера расположения
@@ -34,17 +33,19 @@ public class MainPanel extends JPanel {
         layout.setAutoCreateContainerGaps(true);
 
         // Создание горизонтальной группы
-        layout.setHorizontalGroup(layout.createSequentialGroup()
-                .addComponent(openSongs)
-                .addComponent(openChords));
+        layout.setHorizontalGroup(
+                layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup()
+                        .addComponent(openSongs)
+                        .addComponent(openChords)));
 
         layout.linkSize(SwingConstants.HORIZONTAL, openSongs, openChords);
 
         // Создание вертикальной группы
-        layout.setVerticalGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup()
-                        .addComponent(openSongs)
-                        .addComponent(openChords)));
+        layout.setVerticalGroup(
+                layout.createSequentialGroup()
+                                .addComponent(openSongs)
+                                .addComponent(openChords));
 
         return panel;
     }

@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class BaseTableModel extends AbstractTableModel {
 
-    private final String[] columnsName = {"Исполнитель", "Название песни", "Ссылка"};
+    private final String[] columnsName = {"Исполнитель", "Песня", "Ссылка"};
     private Object[][] songs = new ClientManager().getSongs();
 
     @Override

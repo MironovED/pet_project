@@ -26,8 +26,11 @@ public class DetailsSongPanel {
     private JPanel showPanel() {
         Song song = new ClientManager().findSong(idRow);
 
+        JLabel label = new JLabel(song.getAuthor() + " - " + song.getTitle());
         JTextArea text = new JTextArea(song.getText());
+        text.setEditable(false);
         JTextField link = new JTextField(song.getYandexLink());
+        link.setEditable(false);
 
         JButton buttonBack = new JButton("назад");
         buttonBack.addActionListener(new ButtonBackListener());
@@ -46,15 +49,17 @@ public class DetailsSongPanel {
                 layout.createSequentialGroup()
                         .addComponent(buttonBack)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                .addComponent(label)
                                 .addComponent(textPane)
                                 .addComponent(link))
         );
 
         layout.setVerticalGroup(
-                layout.createParallelGroup()
+                layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(buttonBack)
-                                .addComponent(textPane))
+                                .addComponent(label))
+                        .addComponent(textPane)
                         .addComponent(link)
         );
 

@@ -2,7 +2,6 @@ package client.ui;
 
 
 import client.utils.Utils;
-import songrepo.Song;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
-
 
 /**
  * Панель списка доступных песен
@@ -87,7 +84,7 @@ public class SongPanel {
         );
 
         layout.setVerticalGroup(
-                layout.createParallelGroup()
+                layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(backButton)
                                 .addComponent(label))
@@ -105,6 +102,4 @@ public class SongPanel {
             System.out.println("Нажали на кнопку возврата на главную страницу");
         }
     }
-
-
 }
