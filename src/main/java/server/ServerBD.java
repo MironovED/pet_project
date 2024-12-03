@@ -65,7 +65,5 @@ public class ServerBD implements Runnable {
     }
 
     @Override
-    public void run() {
-
-    }
+    public void run() {}
 }

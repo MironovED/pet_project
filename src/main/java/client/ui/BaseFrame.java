@@ -25,7 +25,7 @@ public class BaseFrame extends Frame {
 
     public void setFrame() {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setSize(800, 700);
         frame.setLocation(400, 100);
         frame.setVisible(true);
     }

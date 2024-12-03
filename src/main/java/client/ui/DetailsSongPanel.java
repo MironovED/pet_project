@@ -25,19 +25,17 @@ public class DetailsSongPanel {
 
     private JPanel showPanel() {
         Song song = new ClientManager().findSong(idRow);
-
         JLabel label = new JLabel(song.getAuthor() + " - " + song.getTitle());
+
         JTextArea text = new JTextArea(song.getText());
         text.setEditable(false);
+        JScrollPane textPane = new JScrollPane(text);
+
         JTextField link = new JTextField(song.getYandexLink());
         link.setEditable(false);
 
         JButton buttonBack = new JButton("назад");
         buttonBack.addActionListener(new ButtonBackListener());
-
-        JScrollPane textPane = new JScrollPane(text);
-
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);

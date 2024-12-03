@@ -18,6 +18,12 @@ public class ChordsPanel {
     }
 
     private JPanel showPanelChords() {
+
+        String path = "src/main/resources/image/chords.png";
+        JLabel label = new JLabel(new ImageIcon(path));
+        JScrollPane scroll = new JScrollPane(label);
+
+
         JButton backButton = new JButton("Назад");
         backButton.addActionListener(new ChordsPanel.ButtonBackMainPanelListener());
 
@@ -30,14 +36,19 @@ public class ChordsPanel {
 
         // Создание горизонтальной группы
         layout.setHorizontalGroup(layout.createSequentialGroup()
-                .addComponent(backButton));
+                .addComponent(backButton)
+                .addComponent(scroll)
+        );
 
         layout.linkSize(SwingConstants.HORIZONTAL, backButton);
 
         // Создание вертикальной группы
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup()
-                        .addComponent(backButton)));
+                        .addComponent(backButton)
+                        .addComponent(scroll)
+                )
+        );
 
         return panel;
 
