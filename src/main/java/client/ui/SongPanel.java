@@ -28,10 +28,9 @@ public class SongPanel {
 
         JTable tableSong = new JTable(tableModel);
 
-        tableSong.setRowHeight(80);
+        tableSong.setRowHeight(30);
         tableSong.setFillsViewportHeight(true);
         tableSong.setShowGrid(true);
-        tableSong.setGridColor(Color.RED);
         tableSong.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
