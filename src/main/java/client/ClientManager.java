@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import songrepo.Song;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +60,18 @@ public class ClientManager {
         for (int i = 0; i < songList.size(); i++) {
             songs[i][0] = songList.get(i).getAuthor();
             songs[i][1] = songList.get(i).getTitle();
-            songs[i][2] = songList.get(i).getYandexLink();
+            songs[i][2] = songList.get(i).getLink();
         }
     }
+
+    //метод по созданию json объекта
+    public static JSONObject createJson(String author, String title, String text, String link) {
+        JSONObject json = new JSONObject();
+        json.put("Author", author);
+        json.put("title", title);
+        json.put("text", text);
+        json.put("link", link);
+        return json;
+    }
+
 }

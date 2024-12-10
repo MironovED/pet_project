@@ -31,7 +31,7 @@ public class DetailsSongPanel {
         text.setEditable(false);
         JScrollPane textPane = new JScrollPane(text);
 
-        JTextField link = new JTextField(song.getYandexLink());
+        JTextField link = new JTextField(song.getLink());
         link.setEditable(false);
 
         JButton buttonBack = new JButton("назад");

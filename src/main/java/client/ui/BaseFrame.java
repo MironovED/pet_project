@@ -49,7 +49,7 @@ public class BaseFrame extends Frame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Пока нет события на кнопку меню добавить песню");
+            new CreateFrame().showCreatePanel();
         }
     }
 
