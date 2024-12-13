@@ -3,6 +3,7 @@ package server;
 import client.ClientManager;
 import songrepo.Song;
 
+import java.io.File;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -37,31 +38,14 @@ public class ServerBD implements Runnable {
     }
 
     public void createListSong() {
-        clientManager.addSongList("src/main/resources/song/song1.json");
-        clientManager.addSongList("src/main/resources/song/song2.json");
-        clientManager.addSongList("src/main/resources/song/song3.json");
-        clientManager.addSongList("src/main/resources/song/song4.json");
-        clientManager.addSongList("src/main/resources/song/song5.json");
-        clientManager.addSongList("src/main/resources/song/song6.json");
-        clientManager.addSongList("src/main/resources/song/song7.json");
-        clientManager.addSongList("src/main/resources/song/song8.json");
-        clientManager.addSongList("src/main/resources/song/song9.json");
-        clientManager.addSongList("src/main/resources/song/song10.json");
-        clientManager.addSongList("src/main/resources/song/song11.json");
-        clientManager.addSongList("src/main/resources/song/song12.json");
-        clientManager.addSongList("src/main/resources/song/song13.json");
-        clientManager.addSongList("src/main/resources/song/song14.json");
-        clientManager.addSongList("src/main/resources/song/song15.json");
-        clientManager.addSongList("src/main/resources/song/song16.json");
-        clientManager.addSongList("src/main/resources/song/song17.json");
-        clientManager.addSongList("src/main/resources/song/song18.json");
-        clientManager.addSongList("src/main/resources/song/song19.json");
-        clientManager.addSongList("src/main/resources/song/song20.json");
-        clientManager.addSongList("src/main/resources/song/song21.json");
-        clientManager.addSongList("src/main/resources/song/song22.json");
-        clientManager.addSongList("src/main/resources/song/song23.json");
-        clientManager.addSongList("src/main/resources/song/song24.json");
-        clientManager.addSongList("src/main/resources/song/song25.json");
+        String path = "src/main/resources/song/";
+        File dir = new File("src/main/resources/song/");
+
+        for (int i = 0; i < dir.length() ; i++) {
+            String[] dirContents = dir.list();
+            clientManager.addSongList(path + dirContents[i]);
+        }
+
     }
 
     @Override
