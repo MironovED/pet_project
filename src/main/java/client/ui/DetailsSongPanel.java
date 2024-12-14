@@ -34,7 +34,7 @@ public class DetailsSongPanel {
         JTextField link = new JTextField(song.getLink());
         link.setEditable(false);
 
-        JButton buttonBack = new JButton("назад");
+        JButton buttonBack = new JButton("Назад");
         buttonBack.addActionListener(new ButtonBackListener());
 
         GroupLayout layout = new GroupLayout(panel);

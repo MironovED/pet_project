@@ -37,15 +37,15 @@ public class ServerBD implements Runnable {
         }
     }
 
+    // метод берет все файлы из локальной директории о создает список объектов Song
     public void createListSong() {
         String path = "src/main/resources/song/";
         File dir = new File("src/main/resources/song/");
+        String[] dirContents = dir.list();
 
-        for (int i = 0; i < dir.length() ; i++) {
-            String[] dirContents = dir.list();
+        for (int i = 0; i < dirContents.length; i++) {
             clientManager.addSongList(path + dirContents[i]);
         }
-
     }
 
     @Override
