@@ -58,6 +58,9 @@ public class BaseFrame extends Frame {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Пока нет события на кнопку меню удалить песню");
+
+            new RemoveFrame().showRemovePanel();
+
         }
     }
 }
