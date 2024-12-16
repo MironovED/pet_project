@@ -52,6 +52,19 @@ public class ClientManager {
         }
     }
 
+    // метод поиска файла по названию песни
+    public static String getSongName(String jo) {
+        String songName = "";
+        try {
+            String jsonStr = FileUtils.readFileToString(new File(jo));
+            JSONObject json = new JSONObject(jsonStr);
+            songName = json.getString("title");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return songName;
+    }
+
     //метод по изъятию данных из объектов Song и создание двухмерного массива строк
     public static void setListSongName() {
         songList = new Client().getListSong();

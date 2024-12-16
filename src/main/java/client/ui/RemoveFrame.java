@@ -1,5 +1,7 @@
 package client.ui;
 
+import server.ServerBD;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +10,9 @@ public class RemoveFrame {
     private JFrame frame = new JFrame("Удаление песни");
     protected BaseTableModel tableModel = new BaseTableModel();
 
-    public JFrame getFrame() {return frame;}
+    public JFrame getFrame() {
+        return frame;
+    }
 
     public void showRemovePanel() {
         JPanel panel = new JPanel();
@@ -17,7 +21,15 @@ public class RemoveFrame {
         JButton button = new JButton("Удалить песню");
         JScrollPane scrollPane = new JScrollPane(table);
 
-        button.addActionListener(new ButtonRemove());
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String findName = (String) table.getValueAt(table.getSelectedRow(), 2);
+                new ServerBD().removeSong(findName);
+                frame.setVisible(false);
+            }
+        });
+
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);
         layout.setAutoCreateGaps(true);
@@ -45,11 +57,4 @@ public class RemoveFrame {
         frame.setVisible(true);
     }
 
-    public class ButtonRemove implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
-    }
 }

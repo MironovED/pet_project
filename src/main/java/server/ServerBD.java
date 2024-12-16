@@ -19,6 +19,7 @@ public class ServerBD implements Runnable {
     private static Socket clientSocket;
     private static ClientManager clientManager = new ClientManager();
     private static List<Song> listSong = clientManager.getSongList();
+    String path = "src/main/resources/song/";
 
     public void startServer() {
         try {
@@ -39,12 +40,24 @@ public class ServerBD implements Runnable {
 
     // метод берет все файлы из локальной директории о создает список объектов Song
     public void createListSong() {
-        String path = "src/main/resources/song/";
         File dir = new File("src/main/resources/song/");
         String[] dirContents = dir.list();
 
         for (int i = 0; i < dirContents.length; i++) {
-            clientManager.addSongList(path + dirContents[i]);
+            ClientManager.addSongList(path + dirContents[i]);
+        }
+    }
+
+    // метод удаления файла из локальной БД
+    public void removeSong(String name) {
+        File dir = new File("src/main/resources/song/");
+        String[] dirContents = dir.list();
+
+        for( String content : dirContents) {
+            if(ClientManager.getSongName(path + content).equals(name)) {
+                File rm = new File(path + content);
+                rm.delete();
+            }
         }
     }
 
