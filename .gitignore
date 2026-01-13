@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 questions.txt
 .idea/
+.gigaide/
 target
 *.iml
 *.log
