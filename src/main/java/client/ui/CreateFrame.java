@@ -2,6 +2,7 @@ package client.ui;
 
 import client.ClientManager;
 import org.json.JSONObject;
+import server.ServerManager;
 import songrepo.Song;
 
 import javax.swing.*;
@@ -99,7 +100,7 @@ public class CreateFrame {
             if (author.equals("") || title.equals("") || text.equals("") || link.equals("")) {
                 JOptionPane.showMessageDialog(frame, "Все поля должны быть заполнены!");
             } else {
-                JSONObject newJO = ClientManager.createJson(author, title, text, link);
+                JSONObject newJO = ServerManager.createJson(author, title, text, link);
 
                 try {
                     String fileName = "src/main/resources/song/" + title + ".json";

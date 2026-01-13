@@ -1,6 +1,7 @@
 package client.ui;
 
 import server.ServerBD;
+import server.ServerManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class RemoveFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String findName = (String) table.getValueAt(table.getSelectedRow(), 2);
-                new ServerBD().removeSong(findName);
+                new ServerManager().removeSong(findName);
                 JOptionPane.showMessageDialog(frame, "Песня удалена!");
                 frame.setVisible(false);
             }

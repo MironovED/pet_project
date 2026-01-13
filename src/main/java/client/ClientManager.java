@@ -36,22 +36,6 @@ public class ClientManager {
         return songs;
     }
 
-    public List<Song> getSongList() {
-        return songList;
-    }
-
-    //метод по добавлению песни с список songList
-    public static void addSongList(String jo) {
-        try {
-            String jsonStr = FileUtils.readFileToString(new File(jo));
-            JSONObject json = new JSONObject(jsonStr);
-            Song song = new Song(json.getString("Author"), json.getString("title"), json.getString("text"), json.getString("link"));
-            songList.add(song);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     // метод поиска файла по названию песни
     public static String getSongName(String jo) {
         String songName = "";
@@ -75,16 +59,6 @@ public class ClientManager {
             songs[i][1] = songList.get(i).getTitle();
             songs[i][2] = songList.get(i).getLink();
         }
-    }
-
-    //метод по созданию json объекта
-    public static JSONObject createJson(String author, String title, String text, String link) {
-        JSONObject json = new JSONObject();
-        json.put("Author", author);
-        json.put("title", title);
-        json.put("text", text);
-        json.put("link", link);
-        return json;
     }
 
 }

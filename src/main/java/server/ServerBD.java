@@ -17,9 +17,8 @@ import java.util.List;
 public class ServerBD implements Runnable {
     private static ServerSocket server;
     private static Socket clientSocket;
-    private static ClientManager clientManager = new ClientManager();
-    private static List<Song> listSong = clientManager.getSongList();
-    String path = "src/main/resources/song/";
+    private static ServerManager serverManager = new ServerManager();
+    private static List<Song> listSong;
 
     public void startServer() {
         try {
@@ -27,6 +26,7 @@ public class ServerBD implements Runnable {
             System.out.println("Сервер запущен");
             //метод accept() блокирует приложение до тех пор, пока не поступит запрос, после чего возвращает сокет для взаимодействия с клиентом
             while (true) {
+                listSong = serverManager.getSongList();
                 clientSocket = server.accept();
                 ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
                 out.writeObject(listSong);
@@ -35,29 +35,6 @@ public class ServerBD implements Runnable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    // метод берет все файлы из локальной директории о создает список объектов Song
-    public void createListSong() {
-        File dir = new File("src/main/resources/song/");
-        String[] dirContents = dir.list();
-
-        for (int i = 0; i < dirContents.length; i++) {
-            ClientManager.addSongList(path + dirContents[i]);
-        }
-    }
-
-    // метод удаления файла из локальной БД
-    public void removeSong(String name) {
-        File dir = new File("src/main/resources/song/");
-        String[] dirContents = dir.list();
-
-        for( String content : dirContents) {
-            if(ClientManager.getSongName(path + content).equals(name)) {
-                File rm = new File(path + content);
-                rm.delete();
-            }
         }
     }
 

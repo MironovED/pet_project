@@ -1,6 +1,6 @@
 import static java.lang.Thread.sleep;
 
-public class Application {
+public class Application { // TODO при добавлении новой песни не происходит обновления таблицы
 
     public static void main(String[] args) throws InterruptedException {
         Runnable server = new AppServer();
