@@ -34,21 +34,4 @@ public class Song implements Serializable {
     public String getLink() {
         return link;
     }
-
-    public String setAuthor(String author) {
-        return this.author = author;
-    }
-
-    public String setTitle(String title) {
-        return this.title = title;
-    }
-
-    public String setText(String text) {
-        return this.text = text;
-    }
-
-    public String setLink(String link) {
-        return this.link = link;
-    }
-
 }

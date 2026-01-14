@@ -15,6 +15,9 @@ public class ServerManager {
     private static List<Song> songList = new ArrayList<>();
 
     public List<Song> getSongList() {
+        if (!songList.isEmpty()) {
+            songList.clear();
+        }
         createListSong();
         return songList;
     }

@@ -5,6 +5,7 @@ import dto.Song;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class ServerBD implements Runnable {
     private static ServerSocket server;
     private static Socket clientSocket;
     private static ServerManager serverManager = new ServerManager();
-    private static List<Song> listSong;
+    private static List<Song> listSong = new ArrayList<>();
 
     @Override
     public void run() {
@@ -25,6 +26,9 @@ public class ServerBD implements Runnable {
             System.out.println("Сервер запущен");
             //метод accept() блокирует приложение до тех пор, пока не поступит запрос, после чего возвращает сокет для взаимодействия с клиентом
             while (true) {
+                if (!listSong.isEmpty()) {
+                    listSong.clear();
+                }
                 listSong = serverManager.getSongList();
                 clientSocket = server.accept();
                 ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -34,6 +38,12 @@ public class ServerBD implements Runnable {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void checkChangeSongList() {
+        if(listSong.size() != serverManager.getSongList().size()) {
+            new ServerBD().run();
         }
     }
 }

@@ -25,8 +25,9 @@ public class RemoveFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String findName = (String) table.getValueAt(table.getSelectedRow(), 2);
+                String findName = (String) table.getValueAt(table.getSelectedRow(), 1);
                 new ServerManager().removeSong(findName);
+                ServerBD.checkChangeSongList();
                 JOptionPane.showMessageDialog(frame, "Песня удалена!");
                 frame.setVisible(false);
             }

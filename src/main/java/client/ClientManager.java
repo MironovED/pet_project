@@ -49,9 +49,11 @@ public class ClientManager {
 
     //метод по изъятию данных из объектов Song и создание двухмерного массива строк
     public static void setListSongName() {
-        songList = Client.getListSong();
+        if (!songList.isEmpty()) {
+            songList.clear();
+        }
+        songList = new Client().getListSong();
         songs = new String[songList.size()][3];
-
         for (int i = 0; i < songList.size(); i++) {
             songs[i][0] = songList.get(i).getAuthor();
             songs[i][1] = songList.get(i).getTitle();
