@@ -30,7 +30,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                AppClient
+                                Application
                             </mainClass>
                         </manifest>
                     </archive>

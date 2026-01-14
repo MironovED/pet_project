@@ -2,7 +2,7 @@ package client.ui;
 
 import client.ClientManager;
 import client.utils.Utils;
-import songrepo.Song;
+import dto.Song;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

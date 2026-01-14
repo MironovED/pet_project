@@ -3,7 +3,7 @@ package server;
 import client.ClientManager;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
-import songrepo.Song;
+import dto.Song;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class ServerManager {
         String[] dirContents = dir.list();
 
         for( String content : dirContents) {
-            if(ClientManager.getSongName(path + content).equals(name)) {
+            if(ClientManager.getSongFindName(path + content).equals(name)) {
                 File rm = new File(path + content);
                 rm.delete();
             }

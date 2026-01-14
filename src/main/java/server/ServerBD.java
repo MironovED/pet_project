@@ -1,9 +1,7 @@
 package server;
 
-import client.ClientManager;
-import songrepo.Song;
+import dto.Song;
 
-import java.io.File;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -20,7 +18,8 @@ public class ServerBD implements Runnable {
     private static ServerManager serverManager = new ServerManager();
     private static List<Song> listSong;
 
-    public void startServer() {
+    @Override
+    public void run() {
         try {
             server = new ServerSocket(4242);
             System.out.println("Сервер запущен");
@@ -37,7 +36,4 @@ public class ServerBD implements Runnable {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void run() {}
 }

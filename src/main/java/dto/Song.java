@@ -1,4 +1,4 @@
-package songrepo;
+package dto;
 
 import java.io.Serializable;
 

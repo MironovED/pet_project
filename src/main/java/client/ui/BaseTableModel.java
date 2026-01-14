@@ -34,6 +34,7 @@ public class BaseTableModel extends AbstractTableModel {
     public void setValueAt(Object value, int row, int col) {
         songs[row][col] = value;
         fireTableCellUpdated(row, col);
+        fireTableDataChanged();
     }
 
 }
