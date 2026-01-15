@@ -8,9 +8,16 @@ import javax.swing.table.AbstractTableModel;
  * Базовая модель таблицы
  */
 public class BaseTableModel extends AbstractTableModel {
-
     private final String[] columnsName = {"Исполнитель", "Песня", "Ссылка"};
-    private Object[][] songs = new ClientManager().getSongs();
+    private static Object[][] songs;
+
+    public BaseTableModel() {
+        songs = ClientManager.getSongs();
+    }
+
+    public static void updateSongs() {
+        songs = ClientManager.getSongs();
+    }
 
     @Override
     public int getRowCount() {
@@ -36,5 +43,4 @@ public class BaseTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
         fireTableDataChanged();
     }
-
 }

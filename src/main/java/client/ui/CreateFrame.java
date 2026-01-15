@@ -101,6 +101,7 @@ public class CreateFrame {
                     BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
                     writer.write(newJO.toString());
                     writer.close();
+                    BaseTableModel.updateSongs();
                     JOptionPane.showMessageDialog(frame, "Песня добавлена!");
                     frame.setVisible(false);
                 } catch (IOException ex) {
