@@ -26,11 +26,12 @@ public class ServerBD implements Runnable {
             System.out.println("Сервер запущен");
             //метод accept() блокирует приложение до тех пор, пока не поступит запрос, после чего возвращает сокет для взаимодействия с клиентом
             while (true) {
+                clientSocket = server.accept();
                 if (!listSong.isEmpty()) {
                     listSong.clear();
                 }
+                serverManager.createOrUpdateListSong();
                 listSong = serverManager.getSongList();
-                clientSocket = server.accept();
                 ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
                 out.writeObject(listSong);
                 out.close();
@@ -38,12 +39,6 @@ public class ServerBD implements Runnable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    public static void checkChangeSongList() {
-        if(listSong.size() != serverManager.getSongList().size()) {
-            new ServerBD().run();
         }
     }
 }

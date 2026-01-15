@@ -15,16 +15,15 @@ public class ServerManager {
     private static List<Song> songList = new ArrayList<>();
 
     public List<Song> getSongList() {
+        return songList;
+    }
+
+    public void createOrUpdateListSong() {
+        File dir = new File("src/main/resources/song/");
+        String[] dirContents = dir.list();
         if (!songList.isEmpty()) {
             songList.clear();
         }
-        createListSong();
-        return songList;
-    }
-    public void createListSong() {
-        File dir = new File("src/main/resources/song/");
-        String[] dirContents = dir.list();
-
         for (int i = 0; i < dirContents.length; i++) {
             addSongList(path + dirContents[i]);
         }
