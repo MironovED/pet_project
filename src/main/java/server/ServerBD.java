@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Сервер, который служит базой данных для страницы списка песен и детального экрана отдльно взятой песни
@@ -18,12 +19,13 @@ public class ServerBD implements Runnable {
     private static Socket clientSocket;
     private static ServerManager serverManager = new ServerManager();
     private static List<Song> listSong = new ArrayList<>();
+    private static Logger logger = Logger.getLogger(ServerBD.class.getName());
 
     @Override
     public void run() {
         try {
             server = new ServerSocket(4242);
-            System.out.println("Сервер запущен");
+            logger.info("Сервер запущен на порту " + server.getLocalPort());
             //метод accept() блокирует приложение до тех пор, пока не поступит запрос, после чего возвращает сокет для взаимодействия с клиентом
             while (true) {
                 clientSocket = server.accept();
@@ -35,7 +37,8 @@ public class ServerBD implements Runnable {
                 ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
                 out.writeObject(listSong);
                 out.close();
-                System.out.println(listSong);
+                logger.info("Сервер передал объекты в количестве " + listSong.size());
+                logger.info(listSong.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,11 +1,11 @@
 package client.ui;
 
-import server.ServerBD;
 import server.ServerManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class RemoveFrame {
     private JFrame frame = new JFrame("Удаление песни");

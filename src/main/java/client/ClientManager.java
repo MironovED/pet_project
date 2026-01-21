@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * ClientManager содержит методы по взаимодействию с объектами Song
@@ -16,6 +17,7 @@ import java.util.List;
 public class ClientManager {
     private static List<Song> songList = new ArrayList<>();
     private static String[][] songs;
+    private static Logger logger = Logger.getLogger(ClientManager.class.getName());
 
     public static Song findSong(String nameText) {
         // TODO перевести в стрим
@@ -26,6 +28,7 @@ public class ClientManager {
                 return foundSong;
             }
         }
+        logger.info("Выбрали из списка песню: " + foundSong.toString());
         return foundSong;
     }
 

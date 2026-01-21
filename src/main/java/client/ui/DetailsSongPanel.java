@@ -7,6 +7,7 @@ import dto.Song;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 /**
  * Детальный экран выбранной песни
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 public class DetailsSongPanel {
     private static JPanel panel = new JPanel();
     private static String idRow;
+    private static Logger logger = Logger.getLogger(DetailsSongPanel.class.getName());
 
     public DetailsSongPanel(String idRow) {
         this.idRow = idRow;
@@ -70,7 +72,7 @@ public class DetailsSongPanel {
             panel.setVisible(false);
             panel.removeAll();
             new Utils().OpenSongPanel();
-            System.out.println("Нажали на кнопку возврата на страницу песен");
+            logger.info("Нажали кнопку возврата на страницу песен");
         }
     }
 }

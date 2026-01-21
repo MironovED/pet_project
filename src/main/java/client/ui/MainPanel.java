@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 /**
  * Главная панель
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
  */
 public class MainPanel extends JPanel {
     private static JPanel panel = new JPanel();
+    private static Logger logger = Logger.getLogger(MainPanel.class.getName());
 
     public JPanel getPanel() {
         return showMainPanel();
@@ -55,7 +57,7 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             new Utils().OpenSongPanel();
-            System.out.println("Нажали на кнопку открытия списка песен");
+            logger.info("Нажали кнопку открытия списка песен");
         }
     }
 
@@ -64,7 +66,7 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             new Utils().OpenChordPanel();
-            System.out.println("Пока нет события на кнопку открыть аккорды");
+            logger.info("Нажали кнопку открыть аккорды");
         }
     }
 }

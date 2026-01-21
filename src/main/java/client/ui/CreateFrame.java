@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.logging.Logger;
 
 public class CreateFrame {
     private JFrame frame = new JFrame("Добавление песни");
@@ -14,6 +15,7 @@ public class CreateFrame {
     private static JTextField titleField = new JTextField();
     private static JTextField linkField = new JTextField();
     private static JTextArea textField = new JTextArea();
+    private static Logger logger = Logger.getLogger(CreateFrame.class.getName());
 
     public JFrame getFrame(){
         return frame;
@@ -103,6 +105,7 @@ public class CreateFrame {
                     writer.close();
                     BaseTableModel.updateSongs();
                     JOptionPane.showMessageDialog(frame, "Песня добавлена!");
+                    logger.info("Добавлен файл с песней: " + title + " , автор: " + author);
                     frame.setVisible(false);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);

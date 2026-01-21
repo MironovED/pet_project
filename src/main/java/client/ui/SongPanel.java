@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Logger;
 
 /**
  * Панель списка доступных песен
@@ -17,6 +18,7 @@ import java.awt.event.MouseListener;
 public class SongPanel {
     private static JPanel panel = new JPanel();
     protected final BaseTableModel tableModel = new BaseTableModel();
+    private static Logger logger = Logger.getLogger(SongPanel.class.getName());
 
     public JPanel getPanel() {
         return showPanelSong();
@@ -35,9 +37,7 @@ public class SongPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
-                    System.out.println("Двойной клик по строке");
                     String id = String.valueOf(tableSong.getValueAt(tableSong.getSelectedRow(), 1).toString());
-                    System.out.println(id);
                     JPanel detailsPanel = new DetailsSongPanel(id).getPanel();
                     new Utils().OpenDetailsSongPanel(detailsPanel);
                 }
@@ -98,7 +98,7 @@ public class SongPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             new Utils().openMainPanel();
-            System.out.println("Нажали на кнопку возврата на главную страницу");
+            logger.info("Нажали кнопку возврата на главную страницу");
         }
     }
 }

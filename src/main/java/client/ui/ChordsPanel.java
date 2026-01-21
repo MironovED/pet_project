@@ -5,6 +5,7 @@ import client.utils.Utils;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 /**
  * Панель с аккордами
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 
 public class ChordsPanel {
     private static JPanel panel = new JPanel();
+    private static Logger logger = Logger.getLogger(ChordsPanel.class.getName());
 
     public JPanel getPanel() {
         return showPanelChords();
@@ -59,7 +61,7 @@ public class ChordsPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             new Utils().openMainPanel();
-            System.out.println("Нажали на кнопку возврата на главную страницу");
+            logger.info("Нажали кнопку возврата на главную страницу");
         }
     }
 }

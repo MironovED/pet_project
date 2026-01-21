@@ -1,6 +1,7 @@
 package server;
 
 import client.ClientManager;
+import client.ui.RemoveFrame;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import dto.Song;
@@ -9,10 +10,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ServerManager {
     private final String path = "src/main/resources/song/";
     private static List<Song> songList = new ArrayList<>();
+    public static Logger logger = Logger.getLogger(ServerManager.class.getName());
 
     public List<Song> getSongList() {
         return songList;
@@ -38,6 +41,7 @@ public class ServerManager {
             if(ClientManager.getSongFindName(path + content).equals(name)) {
                 File rm = new File(path + content);
                 rm.delete();
+                logger.info("Удален файл: " + content.toString());
             }
         }
     }

@@ -34,4 +34,8 @@ public class Song implements Serializable {
     public String getLink() {
         return link;
     }
+
+    public String toString() {
+        return "Песня: " + getTitle() + " , автор: " + getAuthor() + ";";
+    }
 }
